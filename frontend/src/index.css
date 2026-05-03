@@ -1,0 +1,195 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.main {
+  background-color: #c3e2e4;
+  border: 10px solid #a1d9dd;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  justify-items: center;
+  min-height: 100dvh;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100vh;
+  background: #222;
+
+  transform: translateX(-100%);
+  transition: 0.3s;
+}
+
+.sidebarOpen {
+  transform: translateX(0);
+}
+
+.tabs {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border: 10px solid rgb(173, 191, 248);
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+}
+
+.tab {
+  border: 5px solid rgb(194, 207, 250);
+}
+
+.board {
+  background-color: #eca7cd;
+  border: 10px solid #ee89c1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  justify-items: center;
+}
+
+/* Box */
+.todo_card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 16px;
+  margin: 12px 0;
+  width: 200px;
+  height: 200px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Hover Effekt */
+.todo_card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.203);
+}
+
+/* Oberer Bereich */
+.todo_header {
+  margin-bottom: 10px;
+}
+
+.todo_title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #222;
+}
+
+/* Unterer Bereich */
+.todo_footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Beschreibung */
+.todo_description {
+  font-size: 14px;
+  color: #555;
+  max-width: 70%;
+}
+
+/* Status */
+.todo_status {
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+/* Status Farben */
+.todo_status.done {
+  background: #d4edda;
+  color: #155724;
+}
+
+.todo_status.open {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.modal {
+  border: none;
+  border-radius: 12px;
+  padding: 0;
+  width: 400px;
+}
+
+.modal__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+}
+
+.modal__body {
+  padding: 15px;
+}
+
+.input-box {
+  margin-bottom: 12px;
+}
+
+.input-box input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.form_footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.link {
+  text-decoration: none; /* entfernt den Unterstrich */
+  color: inherit;        /* optional: übernimmt die Textfarbe vom Eltern-Element */
+}
+
+.pagination {
+  margin-top: 5px;
+}
+
+.pagination button {
+  margin: 0px;
+  padding: 0px 0px;
+}
+
+.pagination .active {
+  background: black;
+  color: white;
+}
+
+.add-todo {
+  background: #ffffff;
+  border-radius: 14px;
+  width: 200px;
+  height: 200px;
+  padding: 16px;
+  margin: 12px 0;
+  font-size: 24px;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-todo:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}

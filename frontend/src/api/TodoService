@@ -1,0 +1,21 @@
+//make calls to the backend and fetch data
+
+import axios from "axios";
+
+const API_URL = 'http://localhost:8080/todos';
+
+export async function saveTodo(todo){
+	return await axios.post(API_URL, todo) 
+}
+export async function getTodos(page = 0, size = 10){
+	return await axios.get(`${API_URL}?page=${page}&size=${size}`) //request parameter
+}
+export async function getTodo(id){
+	return await axios.get(`${API_URL}/${id}`) //path parameter
+}
+export async function updateTodo(todo){
+	return await axios.put(`${API_URL}/${todo.id}`,todo)
+}
+export async function deleteTodo(id){
+	return await axios.delete(`${API_URL}/${id}`)
+}
