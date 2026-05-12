@@ -47,14 +47,15 @@ body {
 .board {
   background-color: #eca7cd;
   border: 10px solid #ee89c1;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
-  justify-items: center;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 
 /* Box */
 .todo_card {
+  position: absolute;
   background: #ffffff;
   border-radius: 14px;
   padding: 16px;

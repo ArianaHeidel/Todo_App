@@ -12,7 +12,6 @@ import SideBar from './components/SideBar';
 function App() {
 
     //const [aktuellerWert, FunktionZumÄndern] = useState(startwert); nötig da sonst wert beim jeden rendern zurückgesetzt wird
-    const modalRef = useRef();
     const [data, setData] = useState({});
     const [currentPage, setCurrentPage] = useState(0);
 
