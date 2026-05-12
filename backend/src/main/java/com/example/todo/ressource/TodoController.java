@@ -19,6 +19,7 @@ import java.util.List;
 //gibt json zurück (konvertiert java-objekt in json)
 
 public class TodoController {
+
     private final TodoService todoService;
 
     // nimmt aus der request die json und erstellt ein java objekt
@@ -43,7 +44,8 @@ public class TodoController {
         return ResponseEntity.ok().body(todoService.getTodo(id));
     }
     @PutMapping("/{id}")
-    public ResponseEntity<ToDo> updateTodo( @RequestBody ToDo todo,@PathVariable(value = "id")String id){
+    public ResponseEntity<ToDo> updateTodo(@RequestBody ToDo todo,@PathVariable(value = "id")String id){
+        System.out.println("RECEIVED: " + todo);
         return ResponseEntity.ok().body(todoService.updateTodo(todo,id));
     }
     @DeleteMapping("/{id}")

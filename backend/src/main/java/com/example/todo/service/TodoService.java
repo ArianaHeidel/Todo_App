@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 @Transactional(rollbackOn = Exception.class)
 @RequiredArgsConstructor
 public class TodoService {
+
     private final TodoRepo todorepo;
 
     // gibt Todos auf der Seite zurück, page(Seitenzahl),size(Anzahl der Einträge)
@@ -40,6 +41,8 @@ public class TodoService {
         todo.setDescription(updatedTodo.getDescription());
         todo.setTitle(updatedTodo.getTitle());
         todo.setCompleted(updatedTodo.isCompleted());
+        todo.setX(updatedTodo.getX());
+        todo.setY(updatedTodo.getY());
         return todorepo.save(todo);
     }
     public void deleteTodo(String id){

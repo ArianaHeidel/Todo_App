@@ -15,6 +15,8 @@ import org.hibernate.annotations.UuidGenerator;
  * Title
  * Description
  * Completed
+ * Position X
+ * Position Y
  */
 @Entity
 @Table(name = "todos")
@@ -30,4 +32,6 @@ public class ToDo {
     private String title;
     private String description;
     private boolean completed;
+    private double x ;
+    private double y ;
 }

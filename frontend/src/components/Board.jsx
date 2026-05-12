@@ -1,8 +1,9 @@
 import React from 'react'
 import Todo from './Todo'
 import {useRef, useState, } from 'react';
-import {saveTodo} from '../api/TodoService';
-
+import { saveTodo, updateTodo } from '../api/TodoService';
+import { DndContext } from '@dnd-kit/core';
+import { useParams } from 'react-router-dom';
 
 //data ist the response from backend, content ist the array of todos
 //für jedes element in array(ein todo) wird ein neues element der klasse Todo gemapt mit der id als key
@@ -24,7 +25,8 @@ const Board = ({ data, currentPage, getAllTodos }) => {
     const handleNewTodo = async (event) => {
         event.preventDefault();
         try{
-            const newTodo = { ...values, completed: false }; // füge extra feld completed hinzu 
+            const newTodo = { ...values, completed: false, x: window.innerWidth / 2 - 150,
+            y: window.innerHeight / 2 - 100}; // füge extra feld completed hinzu 
             await saveTodo(newTodo);
             toggleModal(false); // Modal schließen
             setValues({ title: "", description: "" }); //damit formular alte werte nicht behält
@@ -32,8 +34,28 @@ const Board = ({ data, currentPage, getAllTodos }) => {
         catch(error){console.log(error);}
     };
 
+    const handleDragEnd = async (event) => {
+    const { active, delta } = event;
+
+    const todo = data.content.find(t => t.id === active.id);
+
+    if (!todo) return;
+
+    const updated = {
+        ...todo,
+        x: todo.x + delta.x,
+        y: todo.y + delta.y
+    };
+
+    await updateTodo(updated);
+
+    getAllTodos(currentPage);
+};
+
+
     return (
         <>
+            <DndContext onDragEnd={handleDragEnd}>
             <main className='board'>
                 {data?.content?.length === 0 && <div>No ToDos</div>}
                 {data?.content?.length > 0 && data.content.map(todo => <Todo todo={todo} key={todo.id} />)}
@@ -50,6 +72,7 @@ const Board = ({ data, currentPage, getAllTodos }) => {
                     </div>
                 }
             </main>
+            </DndContext>
 
             {/* Modal */}
             <dialog ref={modalRef} className="modal" id="modal">
