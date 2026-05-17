@@ -1,4 +1,6 @@
 # Default ignored files
+backend/.env
+frontend/.env
 /shelf/
 /workspace.xml
 # Ignored default folder with query files
